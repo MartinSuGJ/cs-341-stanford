@@ -5,4 +5,4 @@
 *.csv
 .tox
 *.egg-info
-
+*.DS_Store
