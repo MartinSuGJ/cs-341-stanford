@@ -16,7 +16,7 @@ def evaluate(truth_file_path, predict_file_path, metric):
 
     all_file = pd.merge(truth_file, predict_file, how='left', on=['user_id', 'business_id'])
     if metric == 'RMSE':
-        rmse = np.sqrt(np.mean(sum((all_file['star_x'] - all_file['star_y'])**2)))
+        rmse = np.sqrt(np.mean(sum((all_file[truth_file.columns[2]+'_x'] - all_file[predict_file.columns[2]+'_y'])**2)))
         return rmse
     else:
         return 0
