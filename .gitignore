@@ -1,0 +1,9 @@
+*~
+*.swp
+*.pyc
+*.json
+*.csv
+*.pdf
+.tox
+*.egg-info
+
