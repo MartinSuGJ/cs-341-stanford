@@ -1,6 +1,7 @@
 *~
 *.edgelist
 *.emb
+*.weight
 *.swp
 *.pyc
 *.json

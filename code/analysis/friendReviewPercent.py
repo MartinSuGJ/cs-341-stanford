@@ -14,9 +14,7 @@ def parse_args():
 	return parser.parse_args()
 
 
-if __name__ == '__main__':
-	args = parse_args()
-	
+def generatePercentage(args):
 	trainAndVal = args.trainAndVal
 	test = args.test
 	friendList = args.friendList
@@ -58,6 +56,15 @@ if __name__ == '__main__':
 				count += 1
 		percentage = count/len(friends[user_id])
 		outputWriter.write(user_id + ',' + business_id + ',' + str(percentage) + '\n')
+
+
+
+if __name__ == '__main__':
+	args = parse_args()
+	# generatePercentage(args)
+	
+	
+
 
 
 

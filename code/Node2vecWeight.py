@@ -9,7 +9,7 @@ def parse_args():
 	# parser.add_argument('--edge', nargs='?', default='graph/karate.edgelist',
 	# 					help='Input graph path')
 
-	parser.add_argument('--fl', nargs='?', default='data/yelp_user_friends_list_train.edgelist',
+	parser.add_argument('--fl', nargs='?', default='data/yelp_user_friends_list_train.csv',
 						help='Input graph path')	
 
 	parser.add_argument('--emb', nargs='?', default='data/yelp_user_friends_list_train.emb',
@@ -68,16 +68,13 @@ if __name__ == '__main__':
 			if friend in nodeEmb:
 				score = 1 - spatial.distance.cosine(nodeEmb[userID], nodeEmb[friend])
 				scoreSum += score
-				weight.append(str(score))
+				weight.append(score)
 			else:
-				weight.append[None]
-		avg = str(scoreSum/numFriend)
-		for i in range(numFriend):
-			if weight[i] == None:
-				weight[i] = avg
-			else:
-				weight[i] = str(float(weight[i])/numFriend)
-			weightWriter.write(userID + ',' + str(numFriend) + ',' + '::'.join(weight) + '\n')
+				weight.append[0]
+		# avg = str(scoreSum/numFriend)
+		weight = weight / scoreSum
+		weight = [str(w) for w in weight]
+		weightWriter.write(userID + ',' + str(numFriend) + ',' + '::'.join(weight) + '\n')
 	friendListReader.close()
 	weightWriter.close()
 
